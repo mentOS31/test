@@ -19,27 +19,20 @@ class recipe(db.Model):
     updated_at = db.Column(db.String(128), nullable=False)
     
 
-class User(Resource):
-
-    def post(self):
-        """
-        ユーザを登録する
-        """
-        if request.args.get('id') == 'None' :
-            abort(404)
-        if request.args.get('title') == 'None' :
-            abort(404)
-        if request.args.get('making_time') == 'None' :
-            abort(404)
-        if request.args.get('serves') == 'None' :
-            abort(404)
-        if request.args.get('ingredients') == 'None' :
-            abort(404)
-        if request.args.get('cost') == 'None' :
-            abort(404)
-        db.session.add = (request.json)
-
-        return '', 200
+@app.route('/', methods=['POST'])
+def post():
+    if request.form.get('id') == 'None'
+        abort(404)
+    if request.form.get('title') == 'None'
+        abort(404)
+    if request.form.get('making_time') == 'None'
+        abort(404)
+    if request.form.get('serves') == 'None'
+        abort(404)
+    if request.form.get('ingredients') == 'None'
+        abort(404)
+    if request.form.get('cost') == 'None'
+        abort(404)
 
 
 
