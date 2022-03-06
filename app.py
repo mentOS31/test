@@ -3,19 +3,10 @@ from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///recipe.db'
 db = SQLAlchemy(app)
 api = Api(app)
 
-class recipe(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
-    making_time = db.Column(db.String(50), nullable=False)
-    serves = db.Column(db.String(50), nullable=False)
-    ingredients = db.Column(db.String(50), nullable=False)
-    cost = db.Column(db.String(50), nullable=False)
-    created_at = db.Column(db.String(50), nullable=False)
-    updated_at  = db.Column(db.String(50), nullable=False)
+
 
 
 class User(Resource):
