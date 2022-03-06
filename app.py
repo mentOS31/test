@@ -37,6 +37,18 @@ class User(Resource):
         ユーザを登録する
         """
         #ユーザを追加
+        if request.form.get('id') == 'None' :
+            abort(404)
+        if request.form.get('title') == 'None' :
+            abort(404)
+        if request.form.get('making_time') == 'None' :
+            abort(404)
+        if request.form.get('serves') == 'None' :
+            abort(404)
+        if request.form.get('ingredients') == 'None' :
+            abort(404)
+        if request.form.get('cost') == 'None' :
+            abort(404)
         db.session.add = (request.json)
 
         #正常に登録できたので、HTTP status=204(NO CONTENT)を返す
