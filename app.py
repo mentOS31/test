@@ -28,10 +28,8 @@ class User(Resource):
         result = [n for n in users if n["id"] == id]
 
         if len(result) >= 1: 
-            # ユーザ情報を返却
             return result[0]
         else:
-            # 存在しないユーザIDが指定された
             abort(404)
 
     def post(self):
@@ -44,38 +42,6 @@ class User(Resource):
         #正常に登録できたので、HTTP status=204(NO CONTENT)を返す
         return '', 204
 
-    def put(self):
-        """
-        ユーザを更新する
-        """
-        user = request.json
-        lst = [val for val in users if val["id"] == user["id"]]
-        
-        if len(lst) >= 1: 
-            lst[0]["name"] = user["name"]
-            lst[0]["age"] = user["age"]
-        else:
-            #存在しないユーザIDが指定された場合
-            abort(404)
-
-        #正常に更新できたので、HTTP status=204(NO CONTENT)を返す
-        return '', 204
-
-    def delete(self):
-        """
-        ユーザを削除する
-        """
-        id = request.args.get('id')
-        lst = [i for i, val in enumerate(users) if val["id"] == id]
-        for index in lst:
-            del users[index]
-
-        if len(lst) >= 1: 
-            #ユーザの削除を行った場合、HTTP status=204(NO CONTENT)を返す
-            return '', 204
-        else:
-            #存在しないユーザIDが指定された場合
-            abort(404)
 
 api.add_resource(User, '/user')
 
