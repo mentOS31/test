@@ -25,17 +25,17 @@ class User(Resource):
         """
         ユーザを登録する
         """
-        if request.form.get('id') == 'None' :
+        if request.form.['id'] == 'None' :
             abort(404)
-        if request.form.get('title') == 'None' :
+        if request.form.['title'] == 'None' :
             abort(404)
-        if request.form.get('making_time') == 'None' :
+        if request.form.['making_time'] == 'None' :
             abort(404)
-        if request.form.get('serves') == 'None' :
+        if request.form.['serves'] == 'None' :
             abort(404)
-        if request.form.get('ingredients') == 'None' :
+        if request.form.['ingredients'] == 'None' :
             abort(404)
-        if request.form.get('cost') == 'None' :
+        if request.form.['cost'] == 'None' :
             abort(404)
         db.session.add = (request.json)
 
