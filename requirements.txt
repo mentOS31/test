@@ -3,3 +3,4 @@ gunicorn
 django-heroku
 Flask
 flask_restful
+flask_sqlalchemy
