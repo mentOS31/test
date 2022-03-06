@@ -43,7 +43,6 @@ class User(Resource):
         return '', 204
 
 
-api.add_resource(User, '/user')
 
 if __name__ == "__main__":
     db.create_all()
