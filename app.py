@@ -28,7 +28,7 @@ class User(Resource):
         result = [n for n in users if n["id"] == id]
 
         if len(result) >= 1: 
-            return result[0]
+            return '', 200
         else:
             abort(404)
 
@@ -50,7 +50,7 @@ class User(Resource):
             abort(404)
         db.session.add = (request.json)
 
-        return '', 204
+        return '', 200
 
 
 
