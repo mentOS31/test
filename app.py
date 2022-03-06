@@ -1,15 +1,23 @@
 from flask import Flask, abort, request
 from flask_restful import Resource, Api
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 api = Api(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///recipe.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
-# テストデータ
-users = [
-    { "id": "U001", "name": "ユーザ太郎", "age": 27 },
-    { "id": "U002", "name": "ユーザ二郎", "age": 20 },
-    { "id": "U003", "name": "ユーザ三郎", "age": 10 }
-]
+class recipe(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(128), nullable=False)
+    making_time = db.Column(db.String(128), nullable=False)
+    serves = db.Column(db.String(128), nullable=False)
+    ingredients = db.Column(db.String(128), nullable=False)
+    cost = db.Column(db.String(128), nullable=False)
+    created_at = db.Column(db.String(128), nullable=False)
+    updated_at = db.Column(db.String(128), nullable=False)
+    
 
 class User(Resource):
     def get(self):
@@ -72,4 +80,5 @@ class User(Resource):
 api.add_resource(User, '/user')
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
