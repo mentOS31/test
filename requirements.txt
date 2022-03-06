@@ -2,3 +2,4 @@ django
 gunicorn
 django-heroku
 Flask
+flask_restful
