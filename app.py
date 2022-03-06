@@ -20,17 +20,6 @@ class recipe(db.Model):
     
 
 class User(Resource):
-    def get(self):
-        """
-        ユーザを１件取得する
-        """
-        id = request.args.get('id')
-        result = [n for n in users if n["id"] == id]
-
-        if len(result) >= 1: 
-            return '', 200
-        else:
-            abort(404)
 
     def post(self):
         """
