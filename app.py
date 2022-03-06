@@ -1,22 +1,17 @@
 from flask import Flask, abort, request
 from flask_restful import Resource, Api
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
 api = Api(app)
 
-
-
+# テストデータ
+users = [
+    { "id": "U001", "name": "ユーザ太郎", "age": 27 },
+    { "id": "U002", "name": "ユーザ二郎", "age": 20 },
+    { "id": "U003", "name": "ユーザ三郎", "age": 10 }
+]
 
 class User(Resource):
-    def post(self):
-        
-        users.append(request.json)
-
-        #正常に登録できたので、HTTP status=204(NO CONTENT)を返す
-        return '', 204
-    
     def get(self):
         """
         ユーザを１件取得する
@@ -30,7 +25,16 @@ class User(Resource):
         else:
             # 存在しないユーザIDが指定された
             abort(404)
-    
+
+    def post(self):
+        """
+        ユーザを登録する
+        """
+        #ユーザを追加
+        users.append(request.json)
+
+        #正常に登録できたので、HTTP status=204(NO CONTENT)を返す
+        return '', 204
 
     def put(self):
         """
