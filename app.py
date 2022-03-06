@@ -22,7 +22,24 @@ class recipe(db.Model):
 class User(Resource):
 
     def post(self):
-   
+        """
+        ユーザを登録する
+        """
+        if request.form.get('id') == 'None' :
+            abort(404)
+        if request.form.get('title') == 'None' :
+            abort(404)
+        if request.form.get('making_time') == 'None' :
+            abort(404)
+        if request.form.get('serves') == 'None' :
+            abort(404)
+        if request.form.get('ingredients') == 'None' :
+            abort(404)
+        if request.form.get('cost') == 'None' :
+            abort(404)
+        db.session.add = (request.json)
+
+        return '', 200
 
 
 
